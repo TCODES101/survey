@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduates</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="graduate">
+        <h1 style='text-align: center;'>Graduates/Outruns</h1>
+        
+        <table>
+            <tr>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Institution</th>
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Course</th>
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Course level</th>
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Course Duration</th>
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Examining body</th>
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Year</th>
+             
+                <th style='text-align: left;border:1px solid black;padding:3px;background:black;color:white;'>Gender</th>
+            </tr>
+
+            {%for g in graduates%}
+            <tr>
+                <td style='border:1px solid black;padding:3px;'>{{g.Institution}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.Course}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.CourseLevel}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.CourseDuration}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.ExaminingBody}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.Year}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{g.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+
+        </table>
+    </div>
+</body>
+</html>

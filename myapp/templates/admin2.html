@@ -1,0 +1,115 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/styles2.css">
+</head>
+<body>
+    <div class="side-menu">
+        <div class="brand-name">
+            <h1>Admin</h1>
+        </div>
+        <ul>
+            
+            <li><img src="{%static 'images/students.jfif'%}" alt="">&nbsp; <span><a href="intake">Students Intake</a></span> </li>
+            <li><img src="{%static 'images/graduates.png' %}" alt="">&nbsp; <span><a href="graduates">Graduates</a></span> </li>
+            <li><img src="{%static 'images/staff.jfif'%}" alt="">&nbsp; <span><a href="staff">Staff</a></span> </li>
+            <li><img src="{%static 'images/skillshortage.png' %}" alt="">&nbsp; <span><a href="skill">Skill shortage</a></span> </li>
+            <li><img src="{%static 'images/challenges.png' %}" alt="">&nbsp; <span><a href="challenge">Challenges</a></span> </li>
+            <li><img src="{%static 'images/logout.png' %}" alt="">&nbsp; <span><a href="logoutUser">Logout</a></span> </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                
+                <div class="user">
+                    
+                    <div class="img-case">
+                        <img src="{%static 'images/user2.png' %}" alt="">
+                    </div>
+                </div>
+                <h1>Welcome Thomas</h1>
+            </div>
+            
+        </div>
+        <div class="content">
+            <div class="cards">
+                <div class="card">
+                    <div class="box">
+                        
+                        {%for n in number%}
+                            <h1>{{n}}</h1>
+                        {%endfor%}
+                        
+                       
+                            
+                        
+                        <h3>Institutions</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{%static 'images/schools.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        {%for p in privateInstitution%}
+                            <h1>{{p}}</h1>
+                        {%endfor%}
+                        <h3>Private Institutions</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{%static 'images/schools.png'%}" alt="">
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="box">
+                        {%for pb in publicInstitution%}
+                            <h1>{{pb}}</h1>
+                        {%endfor%}
+                        <h3>Public institutions</h3>
+                    </div>
+                    <div class="icon-case">
+                        <img src="{%static 'images/schools.png'%}" alt="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-2">
+                <div class="recent-payments">
+                    <div class="title">
+                        <h2>Institutions</h2>
+                        <a href="#"class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Institution name</th>
+                            <th>Category</th>
+                            
+                        </tr>
+                        
+                       
+                        {%for data in allSchools%}
+                            
+                            <tr>
+                                <td>{{data.Institution}}</td>
+                                <td>{{data.InstitutionType}}</td>
+                                
+                            </tr>
+                            
+                        {%endfor%}
+                        
+                       
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduates</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/table2excel.js"></script>
+</head>
+<body>
+    <div class="graduate">
+        <h1>Graduates/Outruns</h1>
+        <!--<a href="graduatesPdf">Download report</a>-->
+        <button id="downloadexcel" >Export to Excel</button>
+        
+        <table id="graduates">
+            <tr>
+                <th>Institution</th>
+                <th>Course</th>
+                <th>Course level</th>
+                <th>Course Duration</th>
+                <th>Examining body</th>
+                <th>Year</th>
+             
+                <th>Gender</th>
+            </tr>
+
+            {%for g in graduates%}
+            <tr>
+                <td>{{g.Institution}}</td>
+                <td>{{g.Course}}</td>
+                <td>{{g.CourseLevel}}</td>
+                <td>{{g.CourseDuration}}</td>
+                <td>{{g.ExaminingBody}}</td>
+                <td>{{g.Year}}</td>
+                <td>{{g.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+
+        </table>
+        <script>
+            document.getElementById('downloadexcel').addEventListener('click', function(){
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll("#graduates"))
+            });
+        </script>
+    </div>
+</body>
+</html>

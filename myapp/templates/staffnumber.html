@@ -1,0 +1,50 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/table2excel.js"></script>
+</head>
+<body>
+    <div class="staff">
+        <h1>Total staff</h1>
+        <!--<a href="staffPdf">Download report</a>-->
+        <button id="downloadexcel" >Export to Excel</button>
+        <table id="number">
+            <tr>
+                <th>Institution</th>
+                <th>Staff total</th>
+                <th>staff with dissability</th>
+                <th>Skill area </th>
+                <th>Skill level</th>
+                <th>Gender</th>
+                
+            </tr>
+            {%for s in staff%}
+            <tr>
+                <td>{{s.Institution}}</td>
+                
+                <td>{{s.NumberOfStaff}}</td>
+                <td>{{s.NumberOfStaffWithDissability}}</td>
+                <td>{{s.SkillArea}}</td>
+                <td>{{s.SkillLevel}}</td>
+                <td>{{s.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        <script>
+            document.getElementById('downloadexcel').addEventListener('click', function(){
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll("#number"))
+            });
+        </script>
+    </div>
+    
+    
+</body>
+</html>

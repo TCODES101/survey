@@ -1,0 +1,515 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/script.js" defer></script>
+</head>
+<body>
+    <div class="title">
+        <h1>NHRPD SURVEY SYSTEM<a href="loginf">ADMIN</a></h1> 
+    </div>
+    <hr>
+    <div class="index">
+        <h2>Fill the form below</h2>
+        
+        <form action="collect"method="POST" >
+            {%csrf_token%}
+            <div class="progressbar">
+                
+                <div class="progress" id="progress"></div>
+                <div class="progress-step progress-step-active" data-title="General Particulars"></div>
+                <div class="progress-step" data-title="Students intake"></div>
+                <div class="progress-step" data-title="Outruns/Graduates"></div>
+                <div class="progress-step" data-title="Staff"></div>
+                <div class="progress-step" data-title="Skill shortage"></div>
+                <div class="progress-step" data-title="Challenges"></div>
+                
+            </div>
+            <!--form steps-->
+            {%for m in messages%}
+            <h4 style="text-align:center;color:red;">{{m}}</h4>
+            {%endfor%}
+            <div class="form-step form-step-active">
+                <div class="page">
+                    <label style='margin-left:20%;'>Institution:</label><br>
+                    <input style='margin-left:20%;' type="text" name="institution" placeholder="institution" ><br><br><br>
+                    <label style='margin-left:20%;'>Select your County:</label><br>
+                    <select onchange="myFunction()" id="county" name="counties" style="margin-left:20%; width: 60%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                        <option value="Mombasa">Mombasa</option>
+                        <option value="Kwale">Kwale</option>
+                        <option value="Kilifi">Kilifi</option>
+                        <option value="Tana River">Tana River</option>
+                        <option value="Lamu">Lamu</option>
+                        <option value="Taita Taveta">Taita Taveta</option>
+                        <option value="Garissa">Garissa</option>
+                        <option value="Wajir">Wajir</option>
+                        <option value="Mandera">Mandera</option>
+                        <option value="Marsabit">Marsabit</option>
+                        <option value="Isiolo">Isiolo</option>
+                        <option value="Meru">Meru</option>
+                        <option value="Tharaka nithi">Tharaka nithi</option>
+                        <option value="Embu">Embu</option>
+                        <option value="Kitui">Kitui</option>
+                        <option value="Machakos">Machakos</option>
+                        <option value="Makueni">Makueni</option>
+                        <option value="Nyandarua">Nyandarua</option>
+                        <option value="Nyeri">Nyeri</option>
+                        <option value="Kirinyaga">Kirinyaga</option>
+                        <option value="Murang'a">Murang'a</option>
+                        <option value="Kiambu">Kiambu</option>
+                        <option value="Turkana">Turkana</option>
+                        <option value="West Pokot">West Pokot</option>
+                        <option value="Samburu">Samburu</option>
+                        <option value="Trans Nzoia">Trans Nzoia</option>
+                        <option value="Uasin Gishu">Uasin Gishu</option>
+                        <option value="Elgeyo Marakwet">Elgeyo Marakwet</option>
+                        <option value="Nandi">Nandi</option>
+                        <option value="Baringo">Baringo</option>
+                        <option value="Laikipia">Laikipia</option>
+                        <option value="Nakuru">Nakuru</option>
+                        <option value="Narok">Narok</option>
+                        <option value="Kajiado">Kajiado</option>
+                        <option value="Kericho">Kericho</option>
+                        <option value="Bomet">Bomet</option>
+                        <option value="Kakamega">Kakamega</option>
+                        <option value="Vihiga">Vihiga</option>
+                        <option value="Bungoma">Bugoma</option>
+                        <option value="Busia">Busia</option>
+                        <option value="Siaya">Siaya</option>
+                        <option value="Kisumu">Kisumu</option>
+                        <option value="Homa Bay">Homa Bay</option>
+                        <option value="Migori">Migori</option>
+                        <option value="Kisii">Kisii</option>
+                        <option value="Nyamira">Nyamira</option>
+                        <option value="Nairobi">Nairobi</option>
+                    </select> <br><br>
+                    <label style='margin-left:20%;'>Sub-county</label><br>
+                    <select id="subCounty" name="subC" style="margin-left:20%;width: 60%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                        <option>Mvita</option>
+                        <option>Jomvu</option>
+                        <option>Changamwe</option>
+                        <option>Kisauni</option>
+                        <option>Nyali</option>
+                        <option>Likoni</option>
+        
+                    </select><br><br>
+                    <script>
+                        function myFunction() {
+                        var x = document.getElementById("county").value;
+                        if(x=="Mombasa"){
+                            document.getElementById("subCounty").innerHTML = "<option value='mvita'>Mvita</option><option>Jomvu</option><option>Changamwe</option><option>Kisauni</option><option>Nyali</option><option>Likoni</option>" ;
+                        
+                        }
+                        else if(x=="Nairobi"){
+                            document.getElementById("subCounty").innerHTML="<option>Westlands</option><option>Dagoreti North</option><option>Dagoreti south</option><option>Langata</option><option>Kibra</option><option>Roysambu</option><option>Karasarani</option><option>Ruaraka</option><option>Embakasi south</option><option>Embakasi north</option><option>Embakasi centra</option><option>Embakasi east</option><option>Embaksi west</option><option>Makadara</option><option>Kamukunji</option><option>Starehe</option><option>Mathare</option>";
+                        }
+                        else if(x=="Elgeyo Marakwet"){
+                            document.getElementById("subCounty").innerHTML="<option>Keiyo North</option><option>Keiyo South</option><option>Marakwet west</option><option>Marakwet east</option>";
+                        }
+                        else if(x=="Kwale"){
+                            document.getElementById("subCounty").innerHTML="<option>Mutuga</option><option>Msambweni</option><option>Kinango</option><option>Lunga Lunga</option>";
+                        }
+                        else if(x=="Kilifi"){
+                            document.getElementById("subCounty").innerHTML="<option>Malindi</option><option>Kilifi north</option><option>Magarini</option><option>Kaloleni</option><option>Kilifi south</option><option>Rabai</option><option>Ganze</option>";
+                        }
+                        else if(x=="Tana River"){
+                            document.getElementById("subCounty").innerHTML="<option>Bura</option><option>Galole</option><option>Garsen</option>";
+                        }
+                        else if(x=="Lamu"){
+                            document.getElementById("subCounty").innerHTML="<option>Lamu west</option><option>Lamu East</option>";
+                        }
+                        else if(x=="Taita Taveta"){
+                            document.getElementById("subCounty").innerHTML="<option>Taveta constituency</option><option>Wundanyi constituency</option><option>Mwatate constituency</option><option>Voi constituency</option>";
+                        }
+                        else if(x=="Garissa"){
+                            document.getElementById("subCounty").innerHTML="<option>Garissa township constituency</option><option>Fafi constituency</option><option>Dabaab constituency</option><option>Lagdera constituency</option><option>Balambala constituency</option><option>Ijara constituency</option>";
+                        }
+                        else if(x=="Wajir"){
+                            document.getElementById("subCounty").innerHTML="<option>Buna</option><option>Eldas</option><option>Habaswein</option><option>Tarbaj</option><option>Wajir east</option><option>Wajir north</option><option>Wajir west</option><option>Wajir south</option>";
+                        }
+                        else if(x=="Mandera"){
+                            document.getElementById("subCounty").innerHTML="<option>Mandera west constituency</option><option>Banisa constituency</option><option>Mandera east constituency</option><option>Lafey constituency</option><option>Mandera south constituency</option><option>Mandera north constituency</option>";
+                        }
+                        else if(x=="Marsabit"){
+                            document.getElementById("subCounty").innerHTML="<option>Marsabit central</option><option>Laisamis</option><option>North Horr</option><option>Moyale</option>";
+                        }
+                        else if(x=="Isiolo"){
+                            document.getElementById("subCounty").innerHTML="<option>Isiolo</option><option>Merti</option><option>Galbatulla</option>";
+                        }
+                        else if(x=="Meru"){
+                            document.getElementById("subCounty").innerHTML="<option>North imenti</option><option>South imenti</option><option>Tigania East</option><option>Tigania West</option><option>Igembe south</option><option>Igembe central</option><option>imenti central</option><option>Igembe north</option>";
+                        }
+                        else if(x=="Tharaka nithi"){
+                            document.getElementById("subCounty").innerHTML="<option>Tharaka north</option><option>Tharaka south</option><option>Meru south</option><option>Maraa</option>";
+                        }
+                        else if(x=="Embu"){
+                            document.getElementById("subCounty").innerHTML="<option>Embu west</option><option>Embu north</option><option>Embu east</option><option>Mbeere south</option><option>Mbeere north</option>";
+                        }
+                        else if(x=="Kitui"){
+                            document.getElementById("subCounty").innerHTML="<option>Kitui west</option><option>Kitui central</option><option>Kitui rural</option><option>Kitui south</option><option>Kitui east</option><option>Mwingi north</option><option>Mwingi west</option><option>Mwingi centra</option>";
+                        }
+                        else if(x=="Machakos"){
+                            document.getElementById("subCounty").innerHTML="<option>Machakos town</option><option>Mavoko</option><option>Masinga</option><option>Yatta</option><option>Kangundo</option><option>Kathiani</option><option>Matungulu</option><option>Mwala</option>";
+                        }
+                        else if(x=="Makueni"){
+                            document.getElementById("subCounty").innerHTML="<option>Makueni</option><option>Kilungu</option><option>Kilomwe</option><option>Kibwezi East</option><option>Kibwezi west</option><option>Nzaui</option><option>Kathozweni</option><option>Mbooni west</option><option>Mbooni East</option>";
+                        }
+                        else if(x=="Nyeri"){
+                            document.getElementById("subCounty").innerHTML="<option>Kieni east</option><option>Kieni west</option><option>Mathira east</option><option>Mathira west</option><option>Nyeri central</option><option>Mukurweini</option><option>Tetu</option><option>Othaya</option>";
+                        }
+                        else if(x=="Kirinyaga"){
+                            document.getElementById("subCounty").innerHTML="<option>Kirinyaga east</option><option>Kirinyaga west</option><option>Mwea east</option><option>Mwea west</option><option>Kirinyaga centra</option>";
+                        }
+                        else if(x=="Kirinyaga"){
+                            document.getElementById("subCounty").innerHTML="<option>Kangema constituency</option><option>Kiharu constituency</option><option>Mathoiya constituency</option><option>Kigumo constituency</option><option>Kandara constituency</option><option>Maragwa constituency</option><option>Gatanga constituency</option>";
+                        }
+                        else if(x=="Kiambu"){
+                            document.getElementById("subCounty").innerHTML="<option>Githunguri</option><option>Kiambaa</option><option>Lari</option><option>Limuru</option><option>Kabete</option><option>Gatundu north</option><option>Gatundu south</option><option>Juja</option><option>Kikuyu</option><option>Ruiru</option><option>Kiambu town</option>";
+                        }
+                        else if(x=="Turkana"){
+                            document.getElementById("subCounty").innerHTML="<option>Lomia constituency</option><option>Turkana central constituency</option><option>Turkana east constituency</option><option>Turkana north constituency</option><option>Turkana south constituency</option><option>Turkana west constituency</option>";
+                        }
+                        else if(x=="West Pokot"){
+                            document.getElementById("subCounty").innerHTML="<option>Kacheliba constituency</option><option>Kapenguria central constituency</option><option>Sigor east constituency</option><option>Pokot south constituency</option>";
+                        }
+                        else if(x=="Samburu"){
+                            document.getElementById("subCounty").innerHTML="<option>Samburu East</option><option>Samburu north</option><option>Samburu west</option>";
+                        }
+                        else if(x=="Trans Nzoia"){
+                            document.getElementById("subCounty").innerHTML="<option>Cherangany</option><option>Saboty</option><option>Kwanza</option><option>Kiminini</option><option>Endebes</option>";
+                        }
+                        else if(x=="Uasin Gishu"){
+                            document.getElementById("subCounty").innerHTML="<option>Turbo</option><option>Soy</option><option>Ainabkoi</option><option>Moiben</option><option>Kessess</option><option>Kapseret</option>";
+                        }
+                        else if(x=="Nandi"){
+                            document.getElementById("subCounty").innerHTML="<option>Mosop</option><option>Emgwen</option><option>Aldai</option><option>Tinderet</option><option>Nandi hills</option><option>Chesumei</option>";
+                        }
+                        else if(x=="Baringo"){
+                            document.getElementById("subCounty").innerHTML="<option>Baringo central</option><option>Baringo south</option><option>Baringo north</option><option>Eldama ravine</option><option>Mogotoi</option><option>Tiaty</option>";
+                        }
+                        else if(x=="Laikipia"){
+                            document.getElementById("subCounty").innerHTML="<option>Laikipia north</option><option>Laikipia west</option><option>Laikipia east</option>";
+                        }
+                        else if(x=="Nakuru"){
+                            document.getElementById("subCounty").innerHTML="<option>Gilgil</option><option>Naivasha</option><option>Karesoi south</option><option>Karesoi north</option><option>Nakuru town east</option><option>Nakuru town west</option><option>Rongai</option><option>Subukia</option><option>Njoro</option><option>Gil gil </option><option>Bahati</option>";
+                        }
+                        else if(x=="Narok"){
+                            document.getElementById("subCounty").innerHTML="<option>Narok north</option><option>Narok east</option><option>Narok west</option><option>Narok south</option><option>Transmara east</option><option>Transmara west</option>";
+                        }
+                        else if(x=="Kajiado"){
+                            document.getElementById("subCounty").innerHTML="<option>Kajiado central</option><option>Isinya</option><option>Loitoktok</option><option>Magadi</option><option>Mashuru</option><option>Namanga</option><option>Ng'ong</option>";
+                        }
+                        else if(x=="Kericho"){
+                            document.getElementById("subCounty").innerHTML="<option>Kipkelion west</option><option>Kipkelion east</option><option>Belgut</option><option>Ainamoi</option><option>Sigowet</option><option>Bureti</option>";
+                        }
+                        else if(x=="Bomet"){
+                            document.getElementById("subCounty").innerHTML="<option>Boment central</option><option>Bomet east</option><option>Chepalungu</option><option>Sotik</option><option>Konoin</option>";
+                        }
+                        else if(x=="Kakamega"){
+                            document.getElementById("subCounty").innerHTML="<option>Kakamega north</option><option>Kakamega south</option><option>Kakamega east</option><option>Kakamega central</option><option>Lugari</option><option>Mumias</option>";
+                        }
+                        else if(x=="Vihiga"){
+                            document.getElementById("subCounty").innerHTML="<option>Emuhaya</option><option>Hamisi</option><option>Sabatia</option><option>Vihiga</option><option>Luanda</option>";
+                        }
+                        else if(x=="Bugoma"){
+                            document.getElementById("subCounty").innerHTML="<option>Bumula</option><option>Kabuchai</option><option>Kanduyi</option><option>Kimilili</option><option>Mt. elgon</option><option>Sirisia</option><option>Tongaren</option><option>Webuye west</option>";
+                        }
+                        else if(x=="Busia"){
+                            document.getElementById("subCounty").innerHTML="<option>Teso North</option><option>Teso south</option><option>Nambale</option><option>Matayos</option><option>Butula</option><option>Samia</option><option>Bunyala</option>";
+                        }
+                        else if(x=="Siaya"){
+                            document.getElementById("subCounty").innerHTML="<option>Alego Usonga</option><option>Bondo</option><option>Gem</option><option>Rarieda</option><option>Ugenya</option><option>Ugunja</option>";
+                        }
+                        else if(x=="Kisumu"){
+                            document.getElementById("subCounty").innerHTML="<option>Kisumu west</option><option>Kisumu central</option><option>Kisumu east</option><option>Seme</option><option>Muhoroni</option><option>Nyando</option><option>Nyakach</option>";
+                        }
+                        else if(x=="Homa Bay"){
+                            document.getElementById("subCounty").innerHTML="<option>Kabondo kasipul</option><option>Karachuonyo</option><option>Kasipul</option><option>Mbita</option><option>Ndhiwa</option><option>Rangwe</option><option>Suba</option>";
+                        }
+                        else if(x=="Migori"){
+                            document.getElementById("subCounty").innerHTML="<option>Rongo</option><option>Awendo</option><option>Suna east</option><option>Suna west</option><option>Uriri</option><option>Nyatike</option><option>Kuria east</option><option>Kuria west</option><option>Ntimaru</option><option>Mabera</option>";
+                        }
+                        else if(x=="Kisii"){
+                            document.getElementById("subCounty").innerHTML="<option>Kitutu chache north</option><option>Kitutu chache</option><option>Nyaribari masaba</option><option>Nyaribari chache</option><option>Bomachoge borabu</option><option>Bomachoge chache</option><option>Bobasi</option><option>South mugirago</option><option>Bonchari</option>";
+                        }
+                        else if(x=="Nyamira"){
+                            document.getElementById("subCounty").innerHTML="<option>Manga</option><option>Nyamira south</option><option>Nyamira north</option><option>Borabu</option><option>Masaba north</option>";
+                        }
+                        }
+                    </script>
+                    <label style='margin-left:20%;'>Bulding name:</label><br>
+                    <input type="text" style='margin-left:20%;' name="building" placeholder="Building name" ><br><br><br>
+                    <label style='margin-left:20%;'>Select floor:</label><br>
+                    <select name="floors" style="margin-left:20%; width:60%;height:40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                        <option value="0">Ground floor</option>
+                        <option value="1">1st floor</option>
+                        <option value="2">2nd floor</option>
+                        <option value="3">3rd floor</option>
+                        <option value="4">4th floor</option>
+                        <option value="5">5th floor</option>
+                        <option value="6">6th floor</option>
+                        <option value="7">7th floor</option>
+                        <option value="8">8th floor</option>
+                        <option value="9">9th floor</option>
+                        <option value="10">10th floor</option>
+                        <option value="11">11th floor</option>
+                        <option value="12">12th floor</option>
+                        <option value="13">13th floor</option>
+                        <option value="14">14th floor</option>
+                        <option value="15">15th floor</option>
+                        <option value="16">16th floor</option>
+                        <option value="17">17th floor</option>
+                        <option value="18">18th floor</option>
+                        <option value="19">19th floor</option>
+                        <option value="20">20th floor</option>
+                        <option value="21">21st floor</option>
+                        <option value="22">22nd floor</option>
+                        <option value="23">23rd floor</option>
+                        <option value="24">24th floor</option>
+                        <option value="25">25th floor</option>
+                        <option value="26">26th floor</option>
+                        <option value="27">27th floor</option>
+                        <option value="28">28th floor</option>
+                        <option value="29">29th floor</option>
+                        <option value="30">30th floor</option>
+                    </select><br><br>
+                        <label style='margin-left:20%;'>Town:</label><br>
+                        <input style='margin-left:20%;' type="text" name="town" placeholder="your town" ><br><br><br>
+                        <label style='margin-left:20%;'>Postal address:</label><br>
+                        <input style='margin-left:20%;' type="text" name="postalAddress" placeholder="Postal address" ><br><br><br>
+                        <label style='margin-left:20%;'>Postal code:</label><br>
+                        <input style='margin-left:20%;' type="number" name="postalCode" placeholder="Postal code" ><br><br><br>
+                        <label style='margin-left:20%;'>Telephone number:</label><br>
+                        <input style='margin-left:20%;' type="number" name="tNumber" placeholder="Telephone number" ><br><br><br>
+                        <label style='margin-left:20%;'>Phone number:</label><br>
+                        <input style='margin-left:20%;' type="number" name="pNumber" placeholder="Phone number" ><br><br><br>
+                        <label style='margin-left:20%;'>Email:</label><br>
+                        <input style='margin-left:20%;' type="email" name="email" placeholder="email" ><br><br><br>
+                        <label style='margin-left:20%;'>Institution Category:</label><br>
+                        <select style="margin-left:20%;width: 60%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;" name="institutionCategory">
+                            <option value="Institutes of science and technology">Institutes of science and technology</option>
+                            <option value="National polytechnic">National polytechnic</option>
+                            <option value="National youth service">National youth service</option>
+                            <option value="Technical training institute">Technical training institute</option>
+                            <option value="Vocational training center">Vocational training center</option>
+                            <option value="Commercial college">Commercial college</option>
+                        </select><br><br>
+        
+                        <label style='margin-left:20%;'>institution type:</label><br>
+                        <select name="institutionType" id="" style="margin-left:20%;width: 60%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                            <option value="Public">Public</option>
+                            <option value="Private">Private</option>
+                        </select><br><br>
+                        
+                </div>
+                <div class="">
+                    <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+                </div>
+                
+                
+            </div>
+
+
+            <div class="form-step">
+                <h1>Student Intake by programme, sex, duration and year</h1><br><br>
+                <label style='margin-left:20%;'>Course:</label><br>
+                <input style='margin-left:20%;' type="text" name="course" placeholder="Course"><br><br><br>
+                <label style='margin-left:20%;'>Course level:</label><br>
+                <select name="courseLevel"style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                  <option value="Diploma">Diploma</option>
+                  <option value="Certificate">Certificate</option>
+                  <option value="Artisan">Artisan</option>
+                  <option value="Craft">Craft</option>
+                  <option value="Certificate I/GTT I">Certificate I/GTT I</option>
+                  
+                </select><br><br>
+                <label style='margin-left:20%;'>Cost:</label><br>
+                  <input style='margin-left:20%;' type="number" name="cost"placeholder="Cost"><br><br><br>
+                  <label style='margin-left:20%;'>Intake year:</label><br>
+                  <select name="intakeYear" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                  </select><br><br>
+                  <label style='margin-left:20%;'>Gender:</label><br>
+                  <select name="Gender" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select><br><br>
+            
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ">Previous</a>
+                    <a href="#" class="btn btn-next ">Next</a>
+                </div>
+            </div>
+
+
+            <div class="form-step">
+                <h1>NUMBER OF OUTRUNS/GRADUATES BY PROGRAMME/COURSE,SEX,DURATION AND YEAR</h1><br><br>
+                <label style='margin-left:20%;'>Programme/Course:</label><br>
+                <input style='margin-left:20%;' type="text" name="programmeCourse" placeholder="Programme/Course"><br><br><br>
+                <label style='margin-left:20%;'>Course level:</label><br>
+                <select name="courseLevel2" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Diploma">Diploma</option>
+                    <option value="Certificate">Certificate</option>
+                    <option value="Artisan">Artisan</option>
+                    <option value="Craft">Craft</option>
+                    <option value="Certificate I/GTT I">Certificate I/GTT I</option>
+                </select><br><br>
+                <label style='margin-left:20%;'>Course Duration:</label><br>
+                <input style='margin-left:20%;' type="text"name="cDuration" placeholder="course duration"><br><br><br>
+                <label style='margin-left:20%;'>Examining body:</label><br>
+                <input style='margin-left:20%;' type="text" name="examiningBody"placeholder="examiningBody"placeholder="examining body"><br><br><br>
+                <label style='margin-left:20%;'>Year:</label><br>
+                <select name="year" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                </select><br><br>
+                <label style='margin-left:20%;'>Gender:</label><br>
+                <select name="gender2" id="" style="width: 60%;margin-left: 20%;height: 30px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select><br><br>
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ">Previous</a>
+                    <a href="#" class="btn btn-next ">Next</a>
+                </div>
+            </div>
+
+
+            <div class="form-step">
+                <h1>Enter the current number of academic staff by skill area, level and sex</h1><br><br>
+                <label style='margin-left:20%;'>Total number of teaching staff:</label><br>
+                <input style='margin-left:20%;' type="number" name="numberOfStaff"placeholder="number of teaching staff"><br><br><br>
+                <label style='margin-left:20%;'>Total number of teaching staff with disability:</label><br>
+                <input style='margin-left:20%;' type="number"name="pwd" style="float: none; width: 64.5%;"><br><br>
+                <label style='margin-left:20%;'>Skill area:</label><br>
+                <input style='margin-left:20%;' type="text"name="skillArea" placeholder="Skill area"><br><br><br>
+                <label style='margin-left:20%;'>Skill level:</label><br>
+                <select name="skillLevel" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="PhD">PhD</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Bachelors/Master crafts person">Bachelors/Master crafts person</option>
+                    <option value="PGD/Professional al master crafts person">PGD/Professional al master crafts person</option>
+                    <option value="professional diploma/master crafts person II">professional diploma/master crafts person II</option>
+                    <option value="Professional certificate/master crafts person III">Professional certificate/master crafts person III</option>
+                    <option value="National vocational certificate I/GTT I">National vocational certificate I/GTT I</option>
+                    <option value="national vocational certificate II/GTT II">national vocational certificate II/GTT II</option>
+                    <option value="national vocational certificate III/GTT III">national vocational certificate III/GTT III</option>
+                </select><br><br>
+                <label style='margin-left:20%;'>Gender</label><br>
+                <select name="gender3" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    
+                </select><br><br><br>
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ">Previous</a>
+                    <a href="#" class="btn btn-next ">Next</a>
+                </div>
+            </div>
+
+
+
+            <div class="form-step">
+                <h1>Indicate any skill shortages in terms of skill areas and levels as per establishment</h1><br><br>
+                <label style='margin-left:20%;'>Skill area:</label><br>
+                <input style='margin-left:20%;' type="text"name="sArea" placeholder="Skill area"><br><br><br>
+                <label style='margin-left:20%;'>Skill level required:</label><br>
+                <select name="skillLevelRequired" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="PhD">PhD</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="post graduate diploma">Post graduate diploma</option>
+                    <option value="professional diploma">Professional diploma</option>
+                    <option value="Professional certificate">Professional certificate</option>
+                    <option value="National vocational certificate I">National vocational certificate I</option>
+                    
+                </select><br><br>
+                <label style='margin-left:20%;'>Optimal:</label><br>
+                <input style='margin-left:20%;' type="text"name="optimal" placeholder="Optimal"><br><br><br>
+                <label style='margin-left:20%;'>In post Gender:</label>
+                <select name="inPostGender" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select><br><br>
+                <label style='margin-left:20%;'>Shortfall:</label><br>
+                <input style='margin-left:20%;' type="text"name="shortfall"placeholder="Shortfall"><br><br><br>
+                <label style='margin-left:20%;'>Reasons for shortfall:</label><br>
+                <textarea style='margin-left:20%;' name="shortfallReasons"  cols="100" rows="10"></textarea><br><br>
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ">Previous</a>
+                    <a href="#" class="btn btn-next ">Next</a>
+                </div>
+            </div>
+            
+
+
+            <div class="form-step">
+                <h1>What challenges faces the institution?(Select appropriately)</h1><br><br>
+                <label style='margin-left:20%;'>How has covid affected your institution?</label><br>
+                <select name="covideEffects" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Some programes are done online">Some programs are done online</option>
+                    <option value="The institution temporarily closed down">The institution temporarily closed down</option>
+                    <option value="Some of the staff have been laid off">Some of the staff have been laid off</option>
+                </select><br><br>
+                <label style='margin-left:20%;'>Do you have any other challenges?</label><br>
+                <select onchange="myFunction2()" name="otherChallenges" id="answer" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select><br><br>
+                
+                <label style='margin-left:20%;'>Select challenge:</label><br>
+                <select name="challengeSelect" id="challenge" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;" >
+                    <option></option>
+                </select><br><br><br>
+                <script>
+                    function myFunction2() {
+                        var x = document.getElementById("answer").value;
+                        if(x=="Yes"){
+                            document.getElementById("challenge").innerHTML = "<option>Low enrolment</option><option>Shortage of staff</option><option>Financial</option><option>Lack of tools and equipment</option><option>Cultural beliefs</option>" ;
+                        
+                        
+                        }
+                        else{
+                            document.getElementById("challenge").innerHTML = "<option>None</option>" ;
+
+                        }
+                    }
+
+                </script>
+                <h2>Contact details</h2><br><br>
+                <label style='margin-left:20%;'>Name:</label><br>
+                <input style='margin-left:20%;' type="text"name="name"placeholder="name"><br><br><br>
+                <label style='margin-left:20%;'>Contact number:</label><br>
+                <input style='margin-left:20%;' type="number"name="contactNumber" placeholder="contact number"><br><br><br>
+                <label style='margin-left:20%;'>Email address:</label><br>
+                <input style='margin-left:20%;' type="email" name="email" placeholder="email address"><br><br><br>
+                <label style='margin-left:20%;'>Date:</label><br>
+                <input style='margin-left:20%;' type="date" name="date"><br><br><br>
+                <label style='margin-left:20%;'>Officer administering interview:</label><br>
+                <select name="officer" id="" style="width: 60%;margin-left: 20%;height: 40px;border: 1px solid rgb(121, 120, 120);border-radius: 5px;font-weight: bold;">
+                    <option value="Thomas">Thomas</option>
+                    <option value="Steve">Steve</option>
+                    <option value="Celestine">Celestine</option>
+                </select><br><br>
+                <div class="btns-group">
+                    <a href="#" class="btn btn-prev ">Previous</a>
+                    <input type="submit" class="btn" style="height: 50px; width:80%;background:green;">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

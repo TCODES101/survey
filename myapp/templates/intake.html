@@ -1,0 +1,50 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/table2excel.js"></script>
+</head>
+<body>
+    <div class="intake">
+        <h1>Student intake</h1>
+        <!--<a href="intakePdf">Download report</a>-->
+        <button id="downloadexcel" >Export to Excel</button>
+        <table id="intake">
+            <tr>
+                <th>Institution</th>
+                <th>Course</th>
+                <th>Course level</th>
+                <th>Cost (Ksh)</th>
+                <th>Year</th>
+                <th>Gender</th>
+                
+            </tr>
+            {%for i in intake%}
+            <tr>
+                <td>{{i.Institution}}</td>
+                
+                <td>{{i.Course}}</td>
+                <td>{{i.Courselevel}}</td>
+                <td>{{i.Cost}}</td>
+                <td>{{i.Intakeyear}}</td>
+                <td>{{i.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        <script>
+            document.getElementById('downloadexcel').addEventListener('click', function(){
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll("#intake"))
+            });
+        </script>
+    </div>
+    
+    
+</body>
+</html>

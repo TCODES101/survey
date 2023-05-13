@@ -1,0 +1,28 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="loginform">
+        <h1>LOGIN BELOW</h1>
+        {%for message in messages%}
+      <h4 style="color:red;">{{message}}</h4>{%endfor%}
+        <form action="loginProcess" method="POST">
+            {%csrf_token%}
+            <label>Username:</label><br>
+            <input type="text"name="username"><br><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"><br><br>
+            <button type="submit">Login</button><br><br>
+            <h3>Forgot password? <a href="reset_password/">Click</a></h3>
+            <h4><a href="signup">Create account</a></h4>
+        </form>
+        
+</body>
+</html>

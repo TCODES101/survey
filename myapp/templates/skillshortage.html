@@ -1,0 +1,52 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/table2excel.js"></script>
+</head>
+<body>
+    <div class="staff">
+        <h1>Skill Shortage</h1>
+        <!--<a href="ssPdf">Download report</a>-->
+        <button id="downloadexcel" >Export to Excel</button>
+        <table id='skill'>
+            <tr>
+                <th>Institution</th>
+                <th>Skill area</th>
+                <th>skill level required</th>
+                <th>Optimal </th>
+                <th>Inpost Gender</th>
+                <th>Shortfall</th>
+                <th>Reason for short Fall</th>
+                
+            </tr>
+            {%for s in skill%}
+            <tr>
+                <td>{{s.Institution}}</td>
+                
+                <td>{{s.SkillArea}}</td>
+                <td>{{s.SkilllevelRequired}}</td>
+                <td>{{s.Optimal}}</td>
+                <td>{{s.InPostGender}}</td>
+                <td>{{s.ShortFall}}</td>
+                <td>{{s.ReasonsForShortFall}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        <script>
+            document.getElementById('downloadexcel').addEventListener('click', function(){
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll("#skill"))
+            });
+        </script>
+    </div>
+    
+    
+</body>
+</html>

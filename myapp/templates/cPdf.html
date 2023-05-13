@@ -1,0 +1,48 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+    
+</head>
+<body>
+    <div class="staff">
+        <h1 style='text-align: center;'>Challenges</h1>
+        
+        <table >
+            <tr>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Institution</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Covid effects</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Other challenges</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Challenges </th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Namer</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Contact</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Email</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Officer</th>
+                
+            </tr>
+            {%for s in challenge%}
+            <tr >
+                <td style='border:1px solid black;padding:3px;'>{{s.Institution}}</td>
+                
+                <td style='border:1px solid black;padding:3px;'>{{s.CovidEffects}}</td>
+                <td style='border:1px solid black;padding:3px; width:50px;'>{{s.OtherChallenges}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.OtherChallengesSelected}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.name}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.ContactNumber}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.EmailAddress}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.Officer}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        
+    </div>
+    
+    
+</body>
+</html>

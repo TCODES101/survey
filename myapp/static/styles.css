@@ -1,0 +1,510 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body{
+    margin: 0%;
+    padding: 0%;
+    
+    background-size: cover;
+    
+}
+.title{
+    text-align: center;
+    background-image: linear-gradient(lightblue, white);
+    margin-top: 0%;
+    height: 10vh;
+    padding-top: 20px;
+    
+}
+.title a{
+    float: right;
+    padding-top: 4px;
+    padding-right: 1%;
+    text-decoration: none;
+    font-size:large;
+    color: white;
+    background-color: black;
+    width: 8%;
+    height: 30px;
+    margin-right: 5%;
+    margin-top: 0.5%;
+    border-radius: 8px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+.title a:hover{
+    
+    box-shadow: 3px 3px 3px green;
+    background: lightblue;
+    color: #000;
+    border: 1px solid black;
+}
+hr{
+    box-shadow: 3px 3px 3px black;
+    width: 100vw;
+    
+}
+.title h1{
+    margin-bottom: 0%;
+}
+.index{
+    margin-top: 4px;
+    margin-left: 3%;
+    margin-right: 4%;
+    background: lightblue;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.index form .data{
+    width:84%;
+    height: 25px;
+    
+}
+.index form label{
+    font-weight: bold;
+    font-size: large;
+    
+}
+.index form{
+    width: 60vw;
+    margin: auto;
+}
+.index form h1{
+    font-size:larger;
+    text-align: center;
+}
+.index h2{
+    text-align: center;
+}
+.index form .check{
+    margin-right: 75px;
+}
+.index form button{
+    width: 200px;
+    height: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: black;
+    color: #fff;
+    border-radius: 5px;
+    
+}
+.index form button:hover{
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px #fff;
+    transition: 0.8s ease;
+}
+/*progressbar*/
+.progressbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    counter-reset: step;
+    margin: 2rem 0 4rem;
+   
+}
+.progress-step{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+
+}
+.progress-step::before{
+    counter-increment: step;
+    content:counter(step);
+    
+}
+
+.progressbar::before, .progress{
+    content: "";
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    z-index: -1;
+}
+.progress{
+    background-color: lightblue;
+    width: 0%;
+}
+
+.progress-step::after{
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    font-size: 0.85rem;
+    color: #666;
+
+}
+
+.progress-step-active{
+    background-color: black;
+    color: #f3f3f3;
+}
+.width-50{
+    width: 50%;
+}
+.ml-auto{
+    margin-left: auto;
+}
+
+.input-group{
+    margin: 2rem 0;
+}
+.btns-group{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.btn{
+    padding: .75rem;
+    display: block;
+    text-decoration: none;
+    background-color: black;
+    color:white;
+    text-align: center;
+    cursor: pointer;
+    border-radius: .25rem;
+    
+}
+
+.btn:hover{
+    box-shadow: 3px 3px 3px white;
+    background: lightblue;
+    color: #000;
+    border: 1px solid black;
+}
+.form-step{
+    display: none;
+    animation:animate .5s;
+    transform-origin: top;
+}
+
+.form-step-active{
+    display: block;
+}
+.form-step input{
+    width: 60%;
+    float: left;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid rgb(121, 120, 120);
+    
+
+}
+.form-step label{
+    font-weight: bold;
+}
+@keyframes  animate{
+    from{
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1,1);
+        opacity: 1;
+    }
+    
+}
+
+/*registration*/
+.signupform{
+    margin: auto;
+    width: 35vw;
+    height: 70vh;
+    outline: none;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin-top: 6%;
+}
+.loginform{
+    margin: auto;
+    margin-top: 6%;
+    width: 35vw;
+    height: 50vh;
+    outline: none;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    
+}
+.signupform h1{
+    text-align: center;
+
+}
+.loginform h1{
+    text-align: center;
+
+}
+
+.signupform form input{
+    width: 29vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.loginform form input{
+    width: 29vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+.signupform form button{
+    width: 29vw;
+    background: greenyellow;
+    border: none;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 5vh;
+  border-radius: 5px;
+}
+.loginform form button{
+    width: 29vw;
+    background: greenyellow;
+    border: none;
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 5vh;
+  border-radius: 5px;
+}
+.signupform form button:hover{
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid grey;
+}
+.loginform form button:hover{
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid grey;
+}
+.signupform form label{
+    font-weight: bold;
+    font-size: larger;
+}
+.loginform form label{
+    font-weight: bold;
+    font-size: larger;
+}
+.signupform form h3{
+    float: right;
+}
+.loginform form h3{
+    float: right;
+}
+.signupform form a{
+    text-decoration: none;
+}
+.loginform form a{
+    text-decoration: none;
+}
+.intake table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.intake table td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .intake h1{
+    text-align: center;
+  }
+  .intake table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightblue;
+    color: rgb(49, 47, 47);}
+.intake table tr:nth-child(even){background-color: #f2f2f2;}
+
+.intake table tr:hover {background-color: #ddd;}
+.intake a{
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    float:right;
+    padding-right: 10px;
+    background: green;
+    color: white;
+    height: 5vh;
+    width: 25vw;
+    text-align: center;padding-top: 10px;
+    border-radius: 5px;
+}
+.intake a:hover{
+    color: green;
+    background: white;
+    border: 1px solid green;
+}
+.intake button{
+    color:white;
+    background:green;
+    border:none;
+    width:10vw;
+    height:5vh; 
+    font-weight:bold;
+    font-size:15px;
+    border-radius:5px;
+    float:right;
+    margin-right:10%;
+}
+.intake button:hover{
+    color:green;
+    background: white;
+    border:1px solid green;
+    cursor:pointer;
+}
+
+/*graduates*/
+
+.graduate table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.graduate table td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .graduate h1{
+    text-align: center;
+  }
+  .graduate table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightblue;
+    color: rgb(49, 47, 47);}
+.graduate table tr:nth-child(even){background-color: #f2f2f2;}
+
+.graduate table tr:hover {background-color: #ddd;}
+.graduate a{
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    float:right;
+    padding-right: 10px;
+    background: green;
+    color: white;
+    height: 5vh;
+    width: 25vw;
+    text-align: center;padding-top: 10px;
+    border-radius: 5px;
+}
+.graduate a:hover{
+    color: green;
+    background: white;
+    border: 1px solid green;
+}
+.graduate button{
+    color:white;
+    background:green;
+    border:none;
+    width:10vw;
+    height:5vh; 
+    font-weight:bold;
+    font-size:15px;
+    border-radius:5px;
+    float:right;
+    margin-right:10%;
+}
+.graduate button:hover{
+    color:green;
+    background: white;
+    border:1px solid green;
+    cursor:pointer;
+}
+/*staff*/
+.staff table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.staff table td,th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .staff h1{
+    text-align: center;
+  }
+  .staff table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightblue;
+    color: rgb(49, 47, 47);}
+.staff table tr:nth-child(even){background-color: #f2f2f2;}
+
+.staff table tr:hover {background-color: #ddd;}
+.staff a{
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    float:right;
+    padding-right: 10px;
+    background: green;
+    color: white;
+    height: 5vh;
+    width: 25vw;
+    text-align: center;padding-top: 10px;
+    border-radius: 5px;
+}
+.staff a:hover{
+    color: green;
+    background: white;
+    border: 1px solid green;
+}
+.staff button{
+    color:white;
+    background:green;
+    border:none;
+    width:10vw;
+    height:5vh; 
+    font-weight:bold;
+    font-size:15px;
+    border-radius:5px;
+    float:right;
+    margin-right:10%;
+}
+.staff button:hover{
+    color:green;
+    background: white;
+    border:1px solid green;
+    cursor:pointer;
+}
+
+
+

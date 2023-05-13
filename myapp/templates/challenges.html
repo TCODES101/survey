@@ -1,0 +1,54 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <script src="static/table2excel.js"></script>
+</head>
+<body>
+    <div class="staff">
+        <h1>Challenges</h1>
+        <!--<a href="cPdf">Download report</a>-->
+        <button id="downloadexcel" >Export to Excel</button>
+        <table id="cTable">
+            <tr>
+                <th>Institution</th>
+                <th>Covid effects</th>
+                <th>Other challenges</th>
+                <th>Challenges </th>
+                <th>Namer</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Officer</th>
+                
+            </tr>
+            {%for s in challenge%}
+            <tr>
+                <td>{{s.Institution}}</td>
+                
+                <td>{{s.CovidEffects}}</td>
+                <td>{{s.OtherChallenges}}</td>
+                <td>{{s.OtherChallengesSelected}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.ContactNumber}}</td>
+                <td>{{s.EmailAddress}}</td>
+                <td>{{s.Officer}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+        <script>
+            document.getElementById('downloadexcel').addEventListener('click', function(){
+                var table2excel = new Table2Excel();
+                table2excel.export(document.querySelectorAll("#cTable"))
+            });
+        </script>
+    </div>
+    
+    
+</body>
+</html>

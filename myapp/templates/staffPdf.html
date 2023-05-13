@@ -1,0 +1,42 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="staff">
+        <h1 style='text-align: center;'>Staff Total</h1>
+        
+        <table>
+            <tr>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Institution</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Staff total</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>staff with dissability</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Skill area </th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Skill level</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Gender</th>
+                
+            </tr>
+            {%for s in staff%}
+            <tr>
+                <td style='border:1px solid black;padding:3px;'>{{s.Institution}}</td>
+                
+                <td style='border:1px solid black;padding:3px;'>{{s.NumberOfStaff}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.NumberOfStaffWithDissability}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.SkillArea}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.SkillLevel}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{s.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    
+    
+</body>
+</html>

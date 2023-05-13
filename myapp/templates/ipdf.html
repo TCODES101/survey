@@ -1,0 +1,42 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="intake">
+        <h1 style='text-align: center;'>Student intake</h1>
+        
+        <table>
+            <tr>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Institution</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Course</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Course level</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Cost (Ksh)</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Year</th>
+                <th style='text-align: left;border:1px solid black;padding:3px; background:black;color:white;'>Gender</th>
+                
+            </tr>
+            {%for i in intake%}
+            <tr>
+                <td style='border:1px solid black;padding:3px;'>{{i.Institution}}</td>
+                
+                <td style='border:1px solid black;padding:3px;'>{{i.Course}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{i.Courselevel}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{i.Cost}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{i.Intakeyear}}</td>
+                <td style='border:1px solid black;padding:3px;'>{{i.Gender}}</td>
+                
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    
+    
+</body>
+</html>
